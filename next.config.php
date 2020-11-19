@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'env' => 'dev',
     'database' => [
         'driver' => 'mysql',
         'host' => '127.0.0.1',
@@ -12,6 +13,7 @@ return [
     'paths' => [
         'pages' => __DIR__ . '/pages',
         'migrations' => __DIR__ . '/migrations',
+        'log' => __DIR__ . '/next.log',
     ],
     'commands' => [
         \Next\Commands\MigrateCommand::class,

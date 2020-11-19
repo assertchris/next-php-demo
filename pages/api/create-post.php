@@ -3,10 +3,11 @@
 use App\Models\Post;
 use Next\Http\Request;
 use Next\Http\Response;
-use Next\Validation\Manager;
+use Next\Validator;
+use Next\Log;
 
 return function (Request $request, Response $response) {
-    $validation = Manager::validate($request, [
+    $validation = Validator::run($request, [
         'title' => 'required',
         'content' => 'required',
     ]);
@@ -19,6 +20,8 @@ return function (Request $request, Response $response) {
     }
 
     $post = Post::create($request->only('title', 'content'));
+
+    Log::info("created post {$post->id}");
 
     return $response->json([
         'status' => 'ok',
