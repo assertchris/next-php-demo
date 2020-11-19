@@ -12,7 +12,6 @@ return [
     'paths' => [
         'pages' => __DIR__ . '/pages',
         'migrations' => __DIR__ . '/migrations',
-        'translations' => __DIR__ . '/translations',
     ],
     'commands' => [
         \Next\Commands\MigrateCommand::class,
