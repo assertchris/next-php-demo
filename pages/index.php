@@ -2,7 +2,7 @@
 
 use App\Models\Post;
 
-return function() {
+return function () {
     $posts = Post::all();
     $items = '<li>' . $posts->map(fn($post) => $post->title)->join('</li><li>') . '</li>';
 

@@ -20,7 +20,7 @@ return function (Request $request, Response $response) {
 
     $post = Post::create($request->only('title', 'content'));
 
-    $response->json([
+    return $response->json([
         'status' => 'ok',
         'data' => $post->toArray(),
     ]);

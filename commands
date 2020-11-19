@@ -4,18 +4,17 @@
 require __DIR__ . '/vendor/autoload.php';
 
 use Next\App;
-
-$config = require __DIR__ . '/next.config.php';
-$app = new Next\App($config);
-
 use Symfony\Component\Console\Application;
 
-$application = new Application();
+$config = require __DIR__ . '/next.config.php';
 
-if (!empty($config['commands'])) {
+$next = new Next\App($config);
+$console = new Application();
+
+if (isset($config['commands'])) {
     foreach ($config['commands'] as $class) {
-        $application->add(new $class());
+        $console->add(new $class());
     }
 }
 
-$application->run();
+$console->run();

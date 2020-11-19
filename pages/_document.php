@@ -3,7 +3,7 @@
 use Next\Http\Request;
 use Next\Http\Response;
 
-return function(Request $request, Response $response, $content) {
+return function (Request $request, Response $response, $content) {
     return "
         <!doctype html>
         <html lang='en'>
