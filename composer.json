@@ -11,6 +11,11 @@
   "require": {
     "next/framework": "*"
   },
+  "autoload": {
+    "psr-4": {
+      "App\\Models\\": "models"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true
 }
