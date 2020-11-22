@@ -21,4 +21,12 @@ return [
     'middleware' => [
         \Next\Middleware\SessionMiddleware::class,
     ],
+    'proxies' => [
+        'Next\\Cache' => \Next\Cache\Proxy::class,
+        'Next\\Database' => \Next\Database\Proxy::class,
+        'Next\\Errors' => \Next\Errors\Proxy::class,
+        'Next\\Logging' => \Next\Logging\Proxy::class,
+        'Next\\Session' => \Next\Session\Proxy::class,
+        'Next\\Validation' => \Next\Validation\Proxy::class,
+    ],
 ];
