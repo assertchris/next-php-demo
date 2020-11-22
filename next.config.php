@@ -18,4 +18,7 @@ return [
     'commands' => [
         \Next\Commands\MigrateCommand::class,
     ],
+    'middleware' => [
+        \Next\Middleware\SessionMiddleware::class,
+    ],
 ];

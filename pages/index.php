@@ -6,8 +6,6 @@ use Next\Http\Response;
 
 return function (Request $request, Response $response, array $params = []) {
     $session = app('session');
-
-    $session->start();
     $session->set('count', (int) $session->get('count', 0) + 1);
 
     $posts = Post::all();
