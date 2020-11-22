@@ -1,15 +1,18 @@
 <?php
 
 use App\Models\Post;
-use Next\Session;
+use Next\Http\Request;
+use Next\Http\Response;
 
-return function () {
-    Session::start();
-    Session::set('count', (int) Session::get('count', 0) + 1);
+return function (Request $request, Response $response, array $params = []) {
+    $session = app('session');
+
+    $session->start();
+    $session->set('count', (int) $session->get('count', 0) + 1);
 
     $posts = Post::all();
     $items = '<li>' . $posts->map(fn($post) => $post->title)->join('</li><li>') . '</li>';
-    $count = Session::get('count', 0);
+    $count = $session->get('count', 0);
 
     return "
         <h1 class='text-lg font-semibold'>Posts</h1>

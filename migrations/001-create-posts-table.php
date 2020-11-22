@@ -2,8 +2,8 @@
 
 use Next\Database;
 
-return function() {
-    Database::schema()->create('posts', function($table) {
+return function($connection) {
+    $connection->schema()->create('posts', function($table) {
         $table->increments('id');
         $table->string('title');
         $table->text('content');
