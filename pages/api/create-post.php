@@ -3,9 +3,11 @@
 use App\Models\Post;
 use Next\Http\Request;
 use Next\Http\Response;
+use Next\Logging;
+use Next\Validation;
 
 return function (Request $request, Response $response, array $params = []) {
-    $validation = app('validation')->run($request, [
+    $validation = app(Validation::class)->run($request, [
         'title' => 'required',
         'content' => 'required',
     ]);
@@ -19,7 +21,7 @@ return function (Request $request, Response $response, array $params = []) {
 
     $post = Post::create($request->only('title', 'content'));
 
-    app('log')->info("created post {$post->id}");
+    app(Logging::class)->info("created post {$post->id}");
 
     return $response->json([
         'status' => 'ok',

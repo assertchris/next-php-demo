@@ -972,7 +972,7 @@
             "dist": {
                 "type": "path",
                 "url": "../framework",
-                "reference": "7ad9586040787f7347adbe445a2ca0aa274c5de9"
+                "reference": "3d460ee0b6e32ad784aca0d73fabc6836a9a4946"
             },
             "require": {
                 "filp/whoops": "^2.9",
@@ -984,6 +984,10 @@
                 "nunomaduro/collision": "^5.1",
                 "rakit/validation": "^1.4",
                 "symfony/cache": "^5.1"
+            },
+            "require-dev": {
+                "pestphp/pest": "^0.3.12",
+                "phpunit/phpunit": "^9.3.10"
             },
             "type": "library",
             "autoload": {
