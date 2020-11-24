@@ -1,10 +1,9 @@
 <?php
 
-use App\Models\Post;
-use Next\Http\Request;
-use Next\Http\Response;
+return function (\Next\Http\Request $request, array $params = []) {
+    $post = \App\Models\Post::find($params['id']);
 
-return function (Request $request, Response $response, array $params = []) {
-    $id = $params['id'];
-    return "Post {$id}";
+    return response()->for()
+        ->json(fn() => response()->json($post->toArray()))
+        ->default(fn() => $post->content);
 };

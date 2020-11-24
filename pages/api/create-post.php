@@ -1,30 +1,30 @@
 <?php
 
-use App\Models\Post;
-use Next\Http\Request;
-use Next\Http\Response;
-use Next\Logging;
-use Next\Validation;
+return function (\Next\Http\Request $request, array $params = []) {
+    return $request
+        ->when()
+        ->post(function () use ($request) {
+            $validation = app(\Next\Validation::class)->run($request, [
+                'title' => 'required',
+                'content' => 'required',
+            ]);
 
-return function (Request $request, Response $response, array $params = []) {
-    $validation = app(Validation::class)->run($request, [
-        'title' => 'required',
-        'content' => 'required',
-    ]);
+            if ($validation->fails()) {
+                return $response->json([
+                    'status' => 'error',
+                    'errors' => $validation->errors()->firstOfAll(),
+                ], 400);
+            }
 
-    if ($validation->fails()) {
-        return $response->json([
-            'status' => 'error',
-            'errors' => $validation->errors()->firstOfAll(),
-        ], 400);
-    }
+            $post = \App\Models\Post::create($request->only('title', 'content'));
 
-    $post = Post::create($request->only('title', 'content'));
+            app(\Next\Logging::class)->info("created post {$post->id}");
 
-    app(Logging::class)->info("created post {$post->id}");
-
-    return $response->json([
-        'status' => 'ok',
-        'data' => $post->toArray(),
-    ]);
+            return response()->for()
+                ->html(fn() => $post->content)
+                ->default(fn() => response()->json([
+                    'status' => 'ok',
+                    'data' => $post->toArray(),
+                ]));
+        });
 };

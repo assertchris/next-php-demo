@@ -1,9 +1,6 @@
 <?php
 
-use Next\Http\Request;
-use Next\Http\Response;
-
-return function (Request $request, Response $response, $content, array $params = []) {
+return function (\Next\Http\Request $request, $content, array $params = []) {
     return "
         <!doctype html>
         <html lang='en'>
