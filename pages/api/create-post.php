@@ -1,10 +1,10 @@
 <?php
 
-return function (\Next\Http\Request $request, array $params = []) {
-    return $request
+return function() {
+    return request()
         ->when()
-        ->post(function () use ($request) {
-            $validation = app(\Next\Validation::class)->run($request, [
+        ->post(function() {
+            $validation = app(\Next\Validation::class)->run(request(), [
                 'title' => 'required',
                 'content' => 'required',
             ]);
@@ -16,7 +16,7 @@ return function (\Next\Http\Request $request, array $params = []) {
                 ], 400);
             }
 
-            $post = \App\Models\Post::create($request->only('title', 'content'));
+            $post = \App\Models\Post::create(request()->only('title', 'content'));
 
             app(\Next\Logging::class)->info("created post {$post->id}");
 

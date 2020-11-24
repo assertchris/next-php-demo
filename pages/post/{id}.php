@@ -1,7 +1,7 @@
 <?php
 
-return function (\Next\Http\Request $request, array $params = []) {
-    $post = \App\Models\Post::find($params['id']);
+return function() {
+    $post = \App\Models\Post::find(request()->param('id'));
 
     return response()->for()
         ->json(fn() => response()->json($post->toArray()))
