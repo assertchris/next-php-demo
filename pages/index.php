@@ -11,6 +11,7 @@ return function (Request $request, Response $response, array $params = []) {
     $session->set('count', (int) $session->get('count', 0) + 1);
 
     $posts = app(Cache::class)->remember('posts', fn() => Post::all(), 5);
+
     $items = '<li>' . $posts->map(fn($post) => $post->title)->join('</li><li>') . '</li>';
     $count = $session->get('count', 0);
 
