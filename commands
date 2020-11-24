@@ -3,16 +3,13 @@
 
 require __DIR__ . '/vendor/autoload.php';
 
-use Next\App;
-use Symfony\Component\Console\Application;
-use NunoMaduro\Collision\Provider;
-
 $config = require __DIR__ . '/next.config.php';
 
-$next = new Next\App($config);
-$console = new Application();
+new \Next\App($config);
 
-(new Provider())->register();
+$console = new \Symfony\Component\Console\Application();
+
+(new \NunoMaduro\Collision\Provider())->register();
 
 if (isset($config['commands'])) {
     foreach ($config['commands'] as $class) {
