@@ -10,7 +10,7 @@ return function (\Next\Http\Request $request, array $params = []) {
             ]);
 
             if ($validation->fails()) {
-                return $response->json([
+                return response()->json([
                     'status' => 'error',
                     'errors' => $validation->errors()->firstOfAll(),
                 ], 400);
