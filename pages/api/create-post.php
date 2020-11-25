@@ -4,7 +4,7 @@ return function() {
     return request()
         ->when()
         ->post(function() {
-            $validation = app(\Next\Validation::class)->run(request(), [
+            $validation = request()->validate([
                 'title' => 'required',
                 'content' => 'required',
             ]);
