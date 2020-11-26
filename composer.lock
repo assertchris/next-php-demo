@@ -972,7 +972,7 @@
             "dist": {
                 "type": "path",
                 "url": "../framework",
-                "reference": "f8ddc778d33e3b748980531993309cfc9ce1fe08"
+                "reference": "cdc9287a89c557b8312add8c4548dedc2a9a5f08"
             },
             "require": {
                 "filp/whoops": "^2.9",
