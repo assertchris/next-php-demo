@@ -16,7 +16,7 @@ return [
         'log' => __DIR__ . '/next.log',
     ],
     'commands' => [
-        \Next\Commands\MigrateCommand::class,
+        \Next\Database\Commands\MigrateCommand::class,
     ],
     'middleware' => [
         \Next\Middleware\SessionMiddleware::class,

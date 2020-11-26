@@ -5,11 +5,9 @@ require __DIR__ . '/vendor/autoload.php';
 
 $config = require __DIR__ . '/next.config.php';
 
-new \Next\App($config);
+$app = new \Next\App($config);
 
-$console = new \Symfony\Component\Console\Application();
-
-(new \NunoMaduro\Collision\Provider())->register();
+$console = new \Next\Console\Application($app);
 
 if (isset($config['commands'])) {
     foreach ($config['commands'] as $class) {
