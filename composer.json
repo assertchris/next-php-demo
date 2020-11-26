@@ -1,21 +1,22 @@
 {
-  "scripts": {
-    "serve": "php -S 127.0.0.1:8000 -t public server.php"
-  },
-  "repositories": [
-    {
-      "type": "path",
-      "url": "../framework"
-    }
-  ],
-  "require": {
-    "next/framework": "*"
-  },
-  "autoload": {
-    "psr-4": {
-      "App\\Models\\": "models"
-    }
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true
+    "scripts": {
+        "serve": "php -S 127.0.0.1:8000 -t public server.php",
+        "format": "npm run format:php migrations models pages public server.php next.config.php"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../framework"
+        }
+    ],
+    "require": {
+        "next/framework": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\Models\\": "models"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
 }

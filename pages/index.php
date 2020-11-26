@@ -1,6 +1,6 @@
 <?php
 
-return function(\Next\Cache $cache) {
+return function (\Next\Cache $cache) {
     $posts = $cache->remember('posts', fn() => \App\Models\Post::all(), 5);
     $items = '<li>' . $posts->map(fn($post) => $post->title)->join('</li><li>') . '</li>';
 

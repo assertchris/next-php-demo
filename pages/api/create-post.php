@@ -1,30 +1,36 @@
 <?php
 
-return function() {
+return function (\Next\Logging $logging) {
     return request()
         ->when()
-        ->post(function() {
+        ->post(function () use ($logging) {
             $validation = request()->validate([
                 'title' => 'required',
                 'content' => 'required',
             ]);
 
             if ($validation->fails()) {
-                return response()->json([
-                    'status' => 'error',
-                    'errors' => $validation->errors()->firstOfAll(),
-                ], 400);
+                return response()->json(
+                    [
+                        'status' => 'error',
+                        'errors' => $validation->errors()->firstOfAll(),
+                    ],
+                    400
+                );
             }
 
             $post = \App\Models\Post::create(request()->only('title', 'content'));
 
-            app(\Next\Logging::class)->info("created post {$post->id}");
+            $logging->info("created post {$post->id}");
 
-            return response()->for()
+            return response()
+                ->for()
                 ->html(fn() => $post->content)
-                ->default(fn() => response()->json([
-                    'status' => 'ok',
-                    'data' => $post->toArray(),
-                ]));
+                ->default(
+                    fn() => response()->json([
+                        'status' => 'ok',
+                        'data' => $post->toArray(),
+                    ])
+                );
         });
 };

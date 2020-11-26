@@ -15,12 +15,8 @@ return [
         'migrations' => __DIR__ . '/migrations',
         'log' => __DIR__ . '/next.log',
     ],
-    'commands' => [
-        \Next\Database\Commands\MigrateCommand::class,
-    ],
-    'middleware' => [
-        \Next\Middleware\SessionMiddleware::class,
-    ],
+    'commands' => [\Next\Database\Commands\MigrateCommand::class],
+    'middleware' => [\Next\Middleware\SessionMiddleware::class],
     'proxies' => [
         \Next\Cache::class => \Next\Cache\Proxy::class,
         \Next\Database::class => \Next\Database\Proxy::class,

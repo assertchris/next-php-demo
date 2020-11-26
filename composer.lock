@@ -972,7 +972,7 @@
             "dist": {
                 "type": "path",
                 "url": "../framework",
-                "reference": "bfd053452347dbe670e21fc89098f8dc15580c0b"
+                "reference": "f8ddc778d33e3b748980531993309cfc9ce1fe08"
             },
             "require": {
                 "filp/whoops": "^2.9",
@@ -1005,6 +1005,9 @@
                 ],
                 "test:coverage": [
                     "vendor/bin/pest --coverage"
+                ],
+                "format": [
+                    "npm run format:php source"
                 ]
             },
             "description": "Lightweight framework for PHP app development",

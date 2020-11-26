@@ -1,6 +1,6 @@
 <?php
 
-return function(\Next\Http\Request $request, $content) {
+return function (\Next\Http\Request $request, $content) {
     return "
         <!doctype html>
         <html lang='en'>
